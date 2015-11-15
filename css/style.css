@@ -1,0 +1,77 @@
+body {
+	font-family: calibri;
+	font-style: italic;
+	transition: 400ms;
+}
+
+.account .p1 {
+	font-size: 10em;
+	opacity: 0.5 !important;
+	margin-top: 100px !important;
+}
+
+.account .p1, .account .p2 {
+	margin: 0 auto;
+	display: table;
+}
+
+.account .p1, .account .p2, .account .p1 *, .account .p2 * {
+	transition: 1000ms;
+}
+
+.account .p2 .alternative {
+	padding: 15px 0;
+	display: inline-block;
+	background-color: rgba(0, 0, 0, 0.2);
+	color: #fff;
+	border-radius: 50%;
+	margin: 0 10px;
+	font-size: 2.5em;
+	width: 80px;
+	text-align: center;
+	letter-spacing: -5px;
+	cursor: pointer;
+}
+
+.account .p2 .alternative:hover {
+	animation: jello 0.6s ease-in-out;
+}
+
+.account .p2 .alternative.current {
+	animation: pulse 1s infinite linear;
+}
+
+.account .p2 .alternative.danger {
+	background-color: #e74c3c;
+}
+
+.account .p2 .alternative.success {
+	background-color: #3498db;
+}
+
+.account .info {
+    margin: 0 auto;
+    text-align: center;
+    width: 640px;
+    font-size: 5em;
+    margin-top: 30px;
+}
+
+.account .parcial {
+    position: absolute;
+    right: 60px;
+    top: 60px;
+    font-size: 2em;
+}
+
+.account .more {
+    position: absolute;
+    right: 60px;
+    bottom: 60px;
+    font-size: 3em;
+}
+
+.account .info, .account .parcial, .account .more {
+    text-shadow: 0px 0px 6px #000;
+    color: #fff;
+}
