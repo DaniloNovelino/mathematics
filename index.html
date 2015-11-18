@@ -8,10 +8,11 @@
 	<link rel="stylesheet" href="css/animate.css">
 </head>
 <body>
-	
+
 	<div class="game">
 
 		<div class="account">
+
 			<div class="p1 animated">
 				<span class="number1"></span>
 				<span class="operator"></span>
@@ -39,11 +40,43 @@
 
 		<div id="sessao"></div>
 
+		<!-- Countdown dashboard start -->
+		<div class="program">
+
+			<button href="" class="stop">stop</button>
+			<button href="" class="start">start</button>
+			<div class="countdown callback"></div>
+		</div>
+		<!-- Countdown dashboard end -->
+
 	</div>
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/javascript.js"></script>
 	<script src="js/countdown.js"></script>
+
+	<script type="text/javascript">
+
+		$('.countdown.callback').countdown({
+			date: +(new Date) + 80000,
+			render: function(data) {
+				$(this.el).text(this.leadingZeros(data.min, 2) + " min " + this.leadingZeros(data.sec, 2) + " sec");
+			},
+			onEnd: function() {
+				$(this.el).addClass('ended');
+			}
+		});
+
+		$('.stop').on('click', function(e) {
+	    e.preventDefault();
+	    $('.countdown').data('countdown').stop();
+	  });
+	  $('.start').on('click', function(e) {
+	    e.preventDefault();
+	    $('.countdown').data('countdown').start();
+	  });
+
+	</script>
 
 </body>
 </html>
