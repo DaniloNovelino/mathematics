@@ -1,77 +1,176 @@
-body {
-	font-family: calibri;
-	font-style: italic;
-	transition: 400ms;
+@import url(https://fonts.googleapis.com/css?family=Sniglet:400,800); /*webfont google*/
+
+.alternative {
+  border: none;
+  cursor: pointer;
 }
 
-.account .p1 {
-	font-size: 10em;
-	opacity: 0.5 !important;
-	margin-top: 100px !important;
+.alternative.error, .alternative.success, .alternative.current {
+  color: #fff;
 }
 
-.account .p1, .account .p2 {
-	margin: 0 auto;
-	display: table;
+.alternative.error {
+  background-color: red;
 }
 
-.account .p1, .account .p2, .account .p1 *, .account .p2 * {
-	transition: 1000ms;
+.alternative.success {
+  background-color: green;
 }
 
-.account .p2 .alternative {
-	padding: 15px 0;
-	display: inline-block;
-	background-color: rgba(0, 0, 0, 0.2);
-	color: #fff;
-	border-radius: 50%;
-	margin: 0 10px;
-	font-size: 2.5em;
-	width: 80px;
-	text-align: center;
-	letter-spacing: -5px;
-	cursor: pointer;
+.alternative.current {
+  background-color: blue;
 }
 
-.account .p2 .alternative:hover {
-	animation: jello 0.6s ease-in-out;
+/* layout */
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-.account .p2 .alternative.current {
-	animation: pulse 1s infinite linear;
+body, button {
+  font-family: 'Sniglet', cursive;
+  font-size: 14px;
 }
 
-.account .p2 .alternative.danger {
-	background-color: #e74c3c;
+.align-middle-height, .align-middle-width {
+  position: absolute;
+  margin: auto;
+  width: 10px;
+  height: 10px;
 }
 
-.account .p2 .alternative.success {
-	background-color: #3498db;
+.align-middle-height { top: 0; bottom: 0; }
+.align-middle-width { left: 0; right: 0; }
+
+.text-center {
+  width: 100%;
+  text-align: center;
 }
 
-.account .info {
-    margin: 0 auto;
-    text-align: center;
-    width: 640px;
-    font-size: 5em;
-    margin-top: 30px;
+#presentation {
+  width: 100%;
+  height: 100%;
 }
 
-.account .parcial {
-    position: absolute;
-    right: 60px;
-    top: 60px;
-    font-size: 2em;
+#presentation .col-6 {
+  width: 50%;
+  height: 100%;
+  float: left;
+  position: relative;
 }
 
-.account .more {
-    position: absolute;
-    right: 60px;
-    bottom: 60px;
-    font-size: 3em;
+#presentation .desc {
+  background-color: #03A9F4;
+  box-shadow: -29px 0px 0px 30px rgba(0, 0, 0, .2), -25px 0px 9px 30px rgba(0, 0, 0, .1), -15px 0px 20px 30px rgba(0, 0, 0, .1);
+  animation: slideIn .8s cubic-bezier(0.22, 0.61, 0.36, 1);
+  z-index: 2;
 }
 
-.account .info, .account .parcial, .account .more {
-    text-shadow: 0px 0px 6px #000;
+#presentation .desc.slide-out {
+  animation: slideOut .5s cubic-bezier(0.55, 0.06, 0.68, 0.19) .5s forwards;
+}
+
+#presentation .desc .title {
     color: #fff;
+    font-weight: normal;
+    font-size: 50px;
+    letter-spacing: -4px;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, .1);
+    animation: slideInFade .6s cubic-bezier(0.22, 0.61, 0.36, 1) .4s forwards;
+    opacity: 0;
+}
+
+#presentation .inner {
+    position: absolute;
+    top: 0;
+    width: 400px;
+    height: 100%;
+    text-align: center;
+}
+
+#presentation .desc .inner {
+  right: 0;
+}
+
+#presentation .play {
+  animation: slideInFade .6s cubic-bezier(0.22, 0.61, 0.36, 1) .6s forwards;
+  opacity: 0;
+  z-index: 1;
+}
+
+#presentation .play .inner {
+  left: 0;
+}
+
+#presentation .play .box-button {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: auto;
+  cursor: pointer;
+  margin-top: -15px;
+  transition: .5s;
+}
+
+#presentation .play .box-button.zoom-out {
+  animation: zoomOut .5s cubic-bezier(0.6, -0.28, 0.74, 0.05) forwards;
+}
+
+#presentation .play .box-button:hover {
+  transform: scale(1.2);
+}
+
+#presentation .play span {
+    font-size: 26px;
+    color: #03A9F4;
+    position: absolute;
+    left: 26px;
+    top: 40px;
+    z-index: 1;
+    text-transform: uppercase;
+}
+
+#presentation .play .btn {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border: 3px dashed #03A9F4;
+    border-radius: 50%;
+    animation: rotate 5s linear infinite;
+}
+
+/*.center {
+    width: 100px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}*/
+
+@keyframes slideIn {
+  0% { transform: translateX(-100%) }
+  100% { transform: translateX(0%) }
+}
+
+@keyframes slideOut {
+  0% { transform: translateX(0%) }
+  100% { transform: translateX(-100%) }
+}
+
+@keyframes slideInFade {
+  0% { transform: translateX(-50%); opacity: 0; }
+  100% { transform: translateX(0%); opacity: 1; }
+}
+
+@keyframes rotate {
+  0% { transform: rotateZ(0deg); }
+  100% { transform: rotateZ(360deg); }
+}
+
+@keyframes zoomOut {
+  0% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.5); opacity: 0; }
 }

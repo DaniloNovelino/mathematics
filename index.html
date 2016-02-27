@@ -1,82 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Mathematics</title>
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/animate.css">
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="css/style.css" media="screen">
 </head>
-<body>
+<body ng-controller="ctrl">
 
-	<div class="game">
+  <div id="presentation">
+    <div class="col-6 desc">
+      <div class="inner">
+          <h1 class="align-middle-height title text-center">Mathematics</h1>
+      </div>
+    </div>
+    <div class="col-6 play">
+      <div class="inner">
+        <div class="align-middle-height text-center">
+          <div class="box-button" ng-click="play()">
+            <span>play</span>
+            <div class="btn"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-		<div class="account">
+  <div id="game">
+    <!-- <a href='' ng-click="close()">close</a> -->
+    <!-- <a href='' ng-click="pause()">pause</a> -->
 
-			<div class="p1 animated">
-				<span class="number1"></span>
-				<span class="operator"></span>
-				<span class="number2"></span>
-				<span class="equals">=</span>
-				<span class="results">?</span>
-			</div>
-			<div class="p2">
-				<span class="a alternative animated">0</span>
-				<span class="b alternative animated">0</span>
-				<span class="c alternative animated">0</span>
-				<span class="d alternative animated">0</span>
-			</div>
-			<div class="info animated"></div>
-			<div class="parcial animated"></div>
+    <div id="numbers">
 
-			<div class="more animated"></div>
+      <div id="result">
+        <span>{{optionA}} {{operator}} {{optionB}} = {{answer}}</span>
+      </div>
 
-			<div class="parcial-result">
-				<div class=""><span class="accept">0</span> answers corretcs</div>
-				<div class=""><span class="error">0</span> answers wrong</div>
-			</div>
+      <div id="options">
+        <button id="alternativeA" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeA}}</button>
+        <button id="alternativeB" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeB}}</button>
+        <button id="alternativeC" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeC}}</button>
+        <button id="alternativeD" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeD}}</button>
+      </div>
 
-		</div>
+      <div>
+        <div class="comment msg">Comment: {{comment}}</div>
+        <div class="comment correct">Answer Correct: {{correct}}</div>
+        <div class="comment wrong">Answer Wrong: {{wrong}}</div>
+        <div class="comment hit">Hits: {{hits}}</div>
+      </div>
 
-		<div id="sessao"></div>
+      <timer autostart="false" interval="1000" countdown="20">countdown: {{countdown}}</timer>
 
-		<!-- Countdown dashboard start -->
-		<div class="program">
+    </div>
 
-			<button href="" class="stop">stop</button>
-			<button href="" class="start">start</button>
-			<div class="countdown callback"></div>
-		</div>
-		<!-- Countdown dashboard end -->
+  </div>
 
-	</div>
+  <div id="end">
+    <div class="comment correct">Answer Correct: {{correct}}</div>
+    <div class="comment wrong">Answer Wrong: {{wrong}}</div>
+    <div class="comment hit">Hits: {{hits}}</div>
+  </div>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/javascript.js"></script>
-	<script src="js/countdown.js"></script>
-
-	<script type="text/javascript">
-
-		$('.countdown.callback').countdown({
-			date: +(new Date) + 80000,
-			render: function(data) {
-				$(this.el).text(this.leadingZeros(data.min, 2) + " min " + this.leadingZeros(data.sec, 2) + " sec");
-			},
-			onEnd: function() {
-				$(this.el).addClass('ended');
-			}
-		});
-
-		$('.stop').on('click', function(e) {
-	    e.preventDefault();
-	    $('.countdown').data('countdown').stop();
-	  });
-	  $('.start').on('click', function(e) {
-	    e.preventDefault();
-	    $('.countdown').data('countdown').start();
-	  });
-
-	</script>
-
+  <script type="text/javascript" src="lib/angular.min.js"></script>
+  <script type="text/javascript" src="lib/angular-timer-all.min.js"></script>
+  <script type="text/javascript" src="lib/angular-timer-bower.js"></script>
+  <script type="text/javascript" src="lib/apps2.js"></script>
 </body>
 </html>
