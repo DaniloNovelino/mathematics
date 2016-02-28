@@ -10,14 +10,21 @@
   <div id="presentation">
     <div class="col-6 desc">
       <div class="inner">
-          <h1 class="align-middle-height title text-center">Mathematics</h1>
+        <div id="centered" class="p1 align-middle-height text-center">
+          <h1 class=" title ">Mathematics</h1>
+          <div id="end">
+            <div class="comment correct">{{correct}} correct answers</div>
+            <div class="comment wrong">{{wrong}} wrong answers</div>
+            <div class="comment hit">{{hits}} hits</div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-6 play">
       <div class="inner">
-        <div class="align-middle-height text-center">
+        <div class="p2 align-middle-height text-center">
           <div class="box-button" ng-click="play()">
-            <span>play</span>
+            <span class="text-play">{{textPlay}}</span>
             <div class="btn"></div>
           </div>
         </div>
@@ -29,36 +36,41 @@
     <!-- <a href='' ng-click="close()">close</a> -->
     <!-- <a href='' ng-click="pause()">pause</a> -->
 
-    <div id="numbers">
-
-      <div id="result">
-        <span>{{optionA}} {{operator}} {{optionB}} = {{answer}}</span>
-      </div>
-
-      <div id="options">
-        <button id="alternativeA" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeA}}</button>
-        <button id="alternativeB" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeB}}</button>
-        <button id="alternativeC" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeC}}</button>
-        <button id="alternativeD" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeD}}</button>
-      </div>
-
-      <div>
-        <div class="comment msg">Comment: {{comment}}</div>
-        <div class="comment correct">Answer Correct: {{correct}}</div>
-        <div class="comment wrong">Answer Wrong: {{wrong}}</div>
-        <div class="comment hit">Hits: {{hits}}</div>
-      </div>
-
-      <timer autostart="false" interval="1000" countdown="20">countdown: {{countdown}}</timer>
-
+    <div id="result">
+      <span>{{optionA}} {{operator}} {{optionB}} = {{answer}}</span>
     </div>
 
-  </div>
+    <div id="options">
+      <button id="alternativeA" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeA}}</button>
+      <button id="alternativeB" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeB}}</button>
+      <button id="alternativeC" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeC}}</button>
+      <button id="alternativeD" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeD}}</button>
+    </div>
 
-  <div id="end">
-    <div class="comment correct">Answer Correct: {{correct}}</div>
-    <div class="comment wrong">Answer Wrong: {{wrong}}</div>
-    <div class="comment hit">Hits: {{hits}}</div>
+    <div class="comment msg">{{comment}}</div>
+
+    <div>
+      <div class="comment correct">Answer Correct: {{correct}}</div>
+      <div class="comment wrong">Answer Wrong: {{wrong}}</div>
+      <div class="comment hit">Hits: {{hits}}</div>
+    </div>
+
+    <timer autostart="false" interval="1000" countdown="500000">countdown: {{countdown}}</timer>
+
+    <div id="timeout" class="mask-timeout">
+      <span>
+        <div id="clockAnimation" class="clock">
+          <div class="rotatePont rot1">
+            <div class="pont1"></div>
+          </div>
+          <div class="rotatePont rot2">
+            <div class="pont2"></div>
+          </div>
+        </div>
+        time out
+      </span>
+    </div>
+
   </div>
 
   <script type="text/javascript" src="lib/angular.min.js"></script>
