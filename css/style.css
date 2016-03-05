@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Sniglet:400,800); /*webfont google*/
+@import url(https://fonts.googleapis.com/css?family=Sniglet:400,800); /*Sniglet webfont google*/
+@import url(https://fonts.googleapis.com/css?family=Advent+Pro:400,600,500,700); /*Advent Pro webfont google*/
 
 *:focus {
     outline: none;
@@ -9,21 +10,21 @@
   cursor: pointer;
 }
 
-.alternative.error, .alternative.success, .alternative.current {
+.alternative.error, .alternative.success {
   color: #fff;
 }
 
 .alternative.error {
-  background-color: red;
+  background-color: #F44336;
 }
 
 .alternative.success {
-  background-color: green;
+  background-color: #4CAF50;
 }
 
-.alternative.current {
-  background-color: blue;
-}
+/*.alternative.current {
+  background-color: #2196F3;
+}*/
 
 /* layout */
 
@@ -35,7 +36,8 @@ html, body {
 }
 
 body, button {
-  font-family: 'Sniglet', cursive;
+  /*font-family: 'Sniglet', cursive;*/
+  font-family: 'Advent Pro', sans-serif;
   font-size: 14px;
 }
 
@@ -84,7 +86,6 @@ body, button {
 #presentation .desc .title {
   font-weight: normal;
   font-size: 50px;
-  letter-spacing: -4px;
   animation: slideInFade .6s cubic-bezier(0.22, 0.61, 0.36, 1) .4s forwards;
   opacity: 0;
 }
@@ -184,20 +185,20 @@ body, button {
 
 #game .comment.msg {
     width: 340px;
-    top: 360px;
-    font-size: 2.5em;
+    top: 450px;
+    font-size: 4em;
 }
 
 #game #result {
-    width: 420px;
-    font-size: 5em;
+    width: 650px;
+    font-size: 7em;
     top: 60px;
 }
 
 #game #options {
-    width: 420px;
+    width: 650px;
     font-size: 1em;
-    top: 220px;
+    top: 300px;
 }
 
 #game #options button {
@@ -206,6 +207,11 @@ body, button {
     border-radius: 50%;
     height: 80px;
     margin: 0 5px;
+    position: relative;
+}
+
+#game #options button:hover {
+  animation: pulse .5s ease-in-out infinite;
 }
 
 #game .mask-timeout {
@@ -278,70 +284,28 @@ body, button {
   height: 10px;
 }
 
-@keyframes rotatePont {
-  to { transform: rotate(360deg); }
-}
+/* animations - result */
 
-@keyframes slideIn {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(0%); }
-}
+#alternativeA { animation-delay: 0.0s; }
+#alternativeB { animation-delay: 0.2s; }
+#alternativeC { animation-delay: 0.4s; }
+#alternativeD { animation-delay: 0.6s; }
 
-@keyframes slideOut {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
-}
+/* animations correct answer */
 
-@keyframes slideInFade {
-  0% { transform: translateX(-50%); opacity: 0; }
-  100% { transform: translateX(0%); opacity: 1; }
+.alternative.current {
+  transition: all .5s ease-in-out;
 }
-
-@keyframes rotate {
-  0% { transform: rotateZ(0deg); }
-  100% { transform: rotateZ(360deg); }
+.alternative.current:after, .alternative.current:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  opacity: 0;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(0, 0, 0, .1);
 }
-
-@keyframes zoomOut {
-  0% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(0.5); opacity: 0; }
-}
-
-@keyframes fadeInUp {
-  0% { transform: translateY(300%); opacity: 0; }
-  100% { transform: translateY(0%); opacity: 1; }
-}
-
-@keyframes fadeInUpOutDown {
-  0% { transform: translateY(300%); opacity: 0; }
-  50% { transform: translateY(0%); opacity: 1; }
-  80% { transform: translateY(0%); opacity: 1; }
-  100% { transform: translateY(300%); opacity: 0; }
-}
-
-@keyframes maskTimeout {
-  0% {
-    width: 0;
-    height: 0;
-    left: 0;
-    right: 0;
-  }
-  50% {
-    width: 200%;
-    height: 350%;
-    left: -50%;
-    right: -50%;
-  }
-  80% {
-    width: 200%;
-    height: 350%;
-    left: -50%;
-    right: -50%;
-  }
-  100% {
-    width: 0;
-    height: 0;
-    left: 0;
-    right: 0;
-  }
-}
+.alternative.current:after { animation: sonar 1.5s infinite; }
+.alternative.current:before { animation: sonar 1.5s infinite 0.7s; }

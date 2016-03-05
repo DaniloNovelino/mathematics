@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <title></title>
   <link rel="stylesheet" href="css/style.css" media="screen">
+  <link rel="stylesheet" href="css/animate.css" media="screen">
+  <link rel="stylesheet" href="css/keyframes.css" media="screen">
 </head>
 <body ng-controller="ctrl">
 
@@ -36,15 +38,15 @@
     <!-- <a href='' ng-click="close()">close</a> -->
     <!-- <a href='' ng-click="pause()">pause</a> -->
 
-    <div id="result">
+    <div id="result" class="animated fadeInDown">
       <span>{{optionA}} {{operator}} {{optionB}} = {{answer}}</span>
     </div>
 
     <div id="options">
-      <button id="alternativeA" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeA}}</button>
-      <button id="alternativeB" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeB}}</button>
-      <button id="alternativeC" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeC}}</button>
-      <button id="alternativeD" ng-disabled="disableButton" class="alternative" ng-click="chooseAlternative($event)">{{alternative.alternativeD}}</button>
+      <button id="alternativeA" ng-disabled="disableButton" class="alternative animated flipInY" ng-click="chooseAlternative($event)">{{alternative.alternativeA}}</button>
+      <button id="alternativeB" ng-disabled="disableButton" class="alternative animated flipInY" ng-click="chooseAlternative($event)">{{alternative.alternativeB}}</button>
+      <button id="alternativeC" ng-disabled="disableButton" class="alternative animated flipInY" ng-click="chooseAlternative($event)">{{alternative.alternativeC}}</button>
+      <button id="alternativeD" ng-disabled="disableButton" class="alternative animated flipInY" ng-click="chooseAlternative($event)">{{alternative.alternativeD}}</button>
     </div>
 
     <div class="comment msg">{{comment}}</div>
@@ -55,7 +57,7 @@
       <div class="comment hit">Hits: {{hits}}</div>
     </div>
 
-    <timer autostart="false" interval="1000" countdown="22">countdown: {{countdown}}</timer>
+    <timer autostart="false" interval="1000" countdown="20">countdown: {{countdown}}</timer>
 
     <div id="timeout" class="mask-timeout">
       <span>
@@ -76,6 +78,6 @@
   <script type="text/javascript" src="lib/angular.min.js"></script>
   <script type="text/javascript" src="lib/angular-timer-all.min.js"></script>
   <script type="text/javascript" src="lib/angular-timer-bower.js"></script>
-  <script type="text/javascript" src="lib/apps2.js"></script>
+  <script type="text/javascript" src="lib/apps.js"></script>
 </body>
 </html>
