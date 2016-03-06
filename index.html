@@ -38,26 +38,41 @@
     <!-- <a href='' ng-click="close()">close</a> -->
     <!-- <a href='' ng-click="pause()">pause</a> -->
 
-    <div id="result" class="animated fadeInDown">
-      <span>{{optionA}} {{operator}} {{optionB}} = {{answer}}</span>
+    <div id="contentGame">
+
+
+      <div id="result" class="animated fadeInDown">
+        <span>{{optionA}} {{operator}} {{optionB}} = {{answer}}</span>
+      </div>
+
+      <div id="options">
+        <button id="alternativeA" ng-disabled="disableButton" class="alternative animated flipInY" ng-click="chooseAlternative($event)">{{alternative.alternativeA}}</button>
+        <button id="alternativeB" ng-disabled="disableButton" class="alternative animated flipInY" ng-click="chooseAlternative($event)">{{alternative.alternativeB}}</button>
+        <button id="alternativeC" ng-disabled="disableButton" class="alternative animated flipInY" ng-click="chooseAlternative($event)">{{alternative.alternativeC}}</button>
+        <button id="alternativeD" ng-disabled="disableButton" class="alternative animated flipInY" ng-click="chooseAlternative($event)">{{alternative.alternativeD}}</button>
+      </div>
+
+      <div class="comment animated msg" ng-class="classComment">{{comment}}</div>
+
+      <div class="score animated flash">
+        <div class="comment correct">Answer Correct: {{correct}}</div>
+        <div class="comment wrong">Answer Wrong: {{wrong}}</div>
+        <div class="comment hit">Hits: {{hits}}</div>
+      </div>
+
+      <timer class="animated flash" autostart="false" interval="1000" countdown="62">
+        <div id="clockAnimation" class="timer">
+          <div class="rotatePont rot1">
+            <div class="pont1"></div>
+          </div>
+          <div class="rotatePont rot2">
+            <div class="pont2"></div>
+          </div>
+        </div>
+        <span class="countdown">{{countdown}}</span>
+      </timer>
+
     </div>
-
-    <div id="options">
-      <button id="alternativeA" ng-disabled="disableButton" class="alternative animated flipInY" ng-click="chooseAlternative($event)">{{alternative.alternativeA}}</button>
-      <button id="alternativeB" ng-disabled="disableButton" class="alternative animated flipInY" ng-click="chooseAlternative($event)">{{alternative.alternativeB}}</button>
-      <button id="alternativeC" ng-disabled="disableButton" class="alternative animated flipInY" ng-click="chooseAlternative($event)">{{alternative.alternativeC}}</button>
-      <button id="alternativeD" ng-disabled="disableButton" class="alternative animated flipInY" ng-click="chooseAlternative($event)">{{alternative.alternativeD}}</button>
-    </div>
-
-    <div class="comment msg">{{comment}}</div>
-
-    <div>
-      <div class="comment correct">Answer Correct: {{correct}}</div>
-      <div class="comment wrong">Answer Wrong: {{wrong}}</div>
-      <div class="comment hit">Hits: {{hits}}</div>
-    </div>
-
-    <timer autostart="false" interval="1000" countdown="20">countdown: {{countdown}}</timer>
 
     <div id="timeout" class="mask-timeout">
       <span>
