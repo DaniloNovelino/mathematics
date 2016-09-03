@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Mathematics</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/animate.css">
+</head>
+<body>
+
+	<div class="game">
+
+		<div class="account">
+
+			<div class="p1 animated">
+				<span class="number1"></span>
+				<span class="operator"></span>
+				<span class="number2"></span>
+				<span class="equals">=</span>
+				<span class="results">?</span>
+			</div>
+			<div class="p2">
+				<span class="a alternative animated">0</span>
+				<span class="b alternative animated">0</span>
+				<span class="c alternative animated">0</span>
+				<span class="d alternative animated">0</span>
+			</div>
+			<div class="info animated"></div>
+			<div class="parcial animated"></div>
+
+			<div class="more animated"></div>
+
+			<div class="parcial-result">
+				<div class=""><span class="accept">0</span> answers corretcs</div>
+				<div class=""><span class="error">0</span> answers wrong</div>
+			</div>
+
+		</div>
+
+		<div id="sessao"></div>
+
+		<!-- Countdown dashboard start -->
+		<div class="program">
+
+			<button href="" class="stop">stop</button>
+			<button href="" class="start">start</button>
+			<div class="countdown callback"></div>
+		</div>
+		<!-- Countdown dashboard end -->
+
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/javascript.js"></script>
+	<script src="js/countdown.js"></script>
+
+	<script type="text/javascript">
+
+		$('.countdown.callback').countdown({
+			date: +(new Date) + 80000,
+			render: function(data) {
+				$(this.el).text(this.leadingZeros(data.min, 2) + " min " + this.leadingZeros(data.sec, 2) + " sec");
+			},
+			onEnd: function() {
+				$(this.el).addClass('ended');
+			}
+		});
+
+		$('.stop').on('click', function(e) {
+	    e.preventDefault();
+	    $('.countdown').data('countdown').stop();
+	  });
+	  $('.start').on('click', function(e) {
+	    e.preventDefault();
+	    $('.countdown').data('countdown').start();
+	  });
+
+	</script>
+
+</body>
+</html>
