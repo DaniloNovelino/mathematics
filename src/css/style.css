@@ -86,15 +86,17 @@ body, button {
 }
 
 .bg-1 .list {
-    transform: rotateX(-30deg);
+    // transform: rotateX(-30deg);
     transform-origin: bottom center;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 35%, rgba(255, 255, 255, .1), rgba(0, 0, 0, 0));
+    animation: animation-bg-a 10s ease-in-out infinite; 
 }
 
 .bg-2 .list {
     transform: rotateX(30deg);
     transform-origin: top center;
     background: linear-gradient(to top, rgba(0, 0, 0, 0) 35%, rgba(255, 255, 255, .1), rgba(0, 0, 0, 0));
+    animation: animation-bg-b 10s ease-in-out infinite; 
 }
 
 
@@ -439,4 +441,52 @@ timer {
 
 @keyframes rotatePont {
   to { transform: rotate(360deg) }
+}
+
+@keyframes animation-bg-a {
+    0% {
+        -webkit-transform: rotateX(-60deg);
+           -moz-transform: rotateX(-60deg);
+            -ms-transform: rotateX(-60deg);
+             -o-transform: rotateX(-60deg);
+                transform: rotateX(-60deg);
+    }
+    50% {
+        -webkit-transform: rotateX(0deg);
+           -moz-transform: rotateX(0deg);
+            -ms-transform: rotateX(0deg);
+             -o-transform: rotateX(0deg);
+                transform: rotateX(0deg);
+    }
+    100% {
+        -webkit-transform: rotateX(-60deg);
+           -moz-transform: rotateX(-60deg);
+            -ms-transform: rotateX(-60deg);
+             -o-transform: rotateX(-60deg);
+                transform: rotateX(-60deg);
+    }
+}
+
+@keyframes animation-bg-b {
+    0% {
+        -webkit-transform: rotateX(60deg);
+           -moz-transform: rotateX(60deg);
+            -ms-transform: rotateX(60deg);
+             -o-transform: rotateX(60deg);
+                transform: rotateX(60deg);
+    }
+    50% {
+        -webkit-transform: rotateX(0deg);
+           -moz-transform: rotateX(0deg);
+            -ms-transform: rotateX(0deg);
+             -o-transform: rotateX(0deg);
+                transform: rotateX(0deg);
+    }
+    100% {
+        -webkit-transform: rotateX(60deg);
+           -moz-transform: rotateX(60deg);
+            -ms-transform: rotateX(60deg);
+             -o-transform: rotateX(60deg);
+                transform: rotateX(60deg);
+    }
 }

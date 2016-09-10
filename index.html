@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html>
 <head>
     <meta charset="utf-8">
     <title></title>
@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="src/css/animate.css" media="screen">
     <link rel="stylesheet" href="src/css/keyframes.css" media="screen">
 </head>
-<body ng-controller="ctrl">
+<body ng-app="app" ng-controller="ctrl">
 
     <div class="bg-1">
         <div class="list l1"></div>
@@ -26,11 +26,11 @@
     </div>
 
     <!-- container main-->
-    <div ng-cloak id="container" class="centralize">
+    <div ng-cloak id="container" class="centralize animated bounceIn">
 
         <div id="presentation">
 
-            <h1 class="title">Mathematics</h1>
+            <h1 class="title animated" ng-class="className" ng-mouseenter="className = 'jello'" ng-mouseleave="className = 'pulse'">Mathematics</h1>
 
             <form class="level centralize">
                 <h5>choose a difficulty</h5>
