@@ -2,13 +2,18 @@
 
     'use strict';
 
-    var app = angular.module('app', ['timer']);
+    var app = angular.module('app', ['timer', 'firebase']);
 
-    app.controller('ctrl', function($scope, $element, $timeout){
+    app.controller('ctrl', function($scope, $element, $timeout, $firebaseArray) {
 
-        var maxNumber = 0, range = 0, correct = 0, wrong = 0, hit = 0, countHelp = 5;
+        var maxNumber = 0,
+            range = 0,
+            correct = 0,
+            wrong = 0,
+            hit = 0,
+            countHelp = 5;
 
-        $scope.timerRunning  = false;
+        $scope.timerRunning = false;
         $scope.showCurrentNumber = false;
         $scope.countHelp = countHelp;
 
@@ -23,11 +28,11 @@
         };
 
         $scope.messageText = {
-            success     : 'Great',
-            successHit  : 'Awesome',
-            successHit2 : 'Unbelievable',
-            successLow  : 'Good',
-            error       : 'Ops, are you sure?'
+            success: 'Great',
+            successHit: 'Awesome',
+            successHit2: 'Unbelievable',
+            successLow: 'Good',
+            error: 'Ops, are you sure?'
         };
 
         $scope.play = function(level) {
@@ -38,12 +43,12 @@
             _showHide("calc", "show");
 
             $scope.info.correct = 0;
-            $scope.info.wrong   = 0;
-            $scope.info.hit     = 0;
-            correct             = 0;
-            wrong               = 0;
-            hit                 = 0;
-            countHelp           = 5;
+            $scope.info.wrong = 0;
+            $scope.info.hit = 0;
+            correct = 0;
+            wrong = 0;
+            hit = 0;
+            countHelp = 5;
 
             $scope.timerRunning = true;
             $scope.$broadcast('timer-start');
@@ -58,13 +63,13 @@
         };
 
         var _difficulty = function(level) {
-            if(level == 'easy'){
+            if (level == 'easy') {
                 maxNumber = 5;
                 range = 5;
-            }else if(level == 'normal'){
+            } else if (level == 'normal') {
                 maxNumber = 10;
                 range = 10;
-            }else{
+            } else {
                 maxNumber = 20;
                 range = 30;
             }
@@ -75,22 +80,22 @@
             var numberRandom1 = _randomNumber(0, maxNumber);
             var numberRandom2 = _randomNumber(0, maxNumber);
 
-            if(numberRandom1 > numberRandom2){
+            if (numberRandom1 > numberRandom2) {
                 $scope.numberRandom1 = numberRandom1;
                 $scope.numberRandom2 = numberRandom2;
-            }else{
+            } else {
                 $scope.numberRandom1 = numberRandom2;
                 $scope.numberRandom2 = numberRandom1;
             }
 
-            var arrayOperator = ['+','-','*'];
+            var arrayOperator = ['+', '-', '*'];
             var operator = arrayOperator[_randomNumber(0, arrayOperator.length)];
             $scope.operator = operator;
 
             var currentNumber = _applyCalc($scope.numberRandom1, $scope.numberRandom2, $scope.operator);
             $scope.currentNumber = currentNumber;
 
-            var arrayAlternative = ['numberA','numberB','numberC','numberD'];
+            var arrayAlternative = ['numberA', 'numberB', 'numberC', 'numberD'];
             var currentAlternative = arrayAlternative[_randomNumber(0, arrayAlternative.length)];
             _currentAlternative(currentAlternative, currentNumber);
 
@@ -100,45 +105,45 @@
 
             switch (currentAlternative) {
                 case "numberA":
-                $scope.numberA = $scope.currentNumber;
-                $scope.numberB = _randomNumber(currentNumber - range, currentNumber + range);
-                $scope.numberC = _randomNumber(currentNumber - range, currentNumber + range);
-                $scope.numberD = _randomNumber(currentNumber - range, currentNumber + range);
-                break;
+                    $scope.numberA = $scope.currentNumber;
+                    $scope.numberB = _randomNumber(currentNumber - range, currentNumber + range)
+                    $scope.numberC = _randomNumber(currentNumber - range, currentNumber + range)
+                    $scope.numberD = _randomNumber(currentNumber - range, currentNumber + range)
+                    break;
                 case "numberB":
-                $scope.numberA = _randomNumber(currentNumber - range, currentNumber + range);
-                $scope.numberB = $scope.currentNumber;
-                $scope.numberC = _randomNumber(currentNumber - range, currentNumber + range);
-                $scope.numberD = _randomNumber(currentNumber - range, currentNumber + range);
-                break;
+                    $scope.numberA = _randomNumber(currentNumber - range, currentNumber + range)
+                    $scope.numberB = $scope.currentNumber;
+                    $scope.numberC = _randomNumber(currentNumber - range, currentNumber + range)
+                    $scope.numberD = _randomNumber(currentNumber - range, currentNumber + range)
+                    break;
                 case "numberC":
-                $scope.numberA = _randomNumber(currentNumber - range, currentNumber + range);
-                $scope.numberB = _randomNumber(currentNumber - range, currentNumber + range);
-                $scope.numberC = $scope.currentNumber;
-                $scope.numberD = _randomNumber(currentNumber - range, currentNumber + range);
-                break;
+                    $scope.numberA = _randomNumber(currentNumber - range, currentNumber + range)
+                    $scope.numberB = _randomNumber(currentNumber - range, currentNumber + range)
+                    $scope.numberC = $scope.currentNumber;
+                    $scope.numberD = _randomNumber(currentNumber - range, currentNumber + range)
+                    break;
                 case "numberD":
-                $scope.numberA = _randomNumber(currentNumber - range, currentNumber + range);
-                $scope.numberB = _randomNumber(currentNumber - range, currentNumber + range);
-                $scope.numberC = _randomNumber(currentNumber - range, currentNumber + range);
-                $scope.numberD = $scope.currentNumber;
-                break;
+                    $scope.numberA = _randomNumber(currentNumber - range, currentNumber + range)
+                    $scope.numberB = _randomNumber(currentNumber - range, currentNumber + range)
+                    $scope.numberC = _randomNumber(currentNumber - range, currentNumber + range)
+                    $scope.numberD = $scope.currentNumber;
+                    break;
             }
 
         };
 
         var _applyCalc = function(a, b, c) {
             var result = 0;
-            switch(c) {
+            switch (c) {
                 case '+':
-                result = a + b;
-                break;
+                    result = a + b;
+                    break;
                 case '-':
-                result = a - b;
-                break;
+                    result = a - b;
+                    break;
                 case '*':
-                result = a * b;
-                break;
+                    result = a * b;
+                    break;
             }
             return result;
         };
@@ -149,20 +154,20 @@
         };
 
         var _timeOutComment = function(time) {
-            var apppenComment = function(){
+            var apppenComment = function() {
                 $scope.message = "";
             }
             $timeout(apppenComment, time);
         };
 
         var _optionsClass = {
-            removeEspecificClass : function(classNameGeneric, classNameToRemove){
+            removeEspecificClass: function(classNameGeneric, classNameToRemove) {
                 var classToRemove = document.getElementsByClassName(classNameGeneric);
                 for (var i = 0; i < classToRemove.length; i++) {
                     classToRemove[i].classList.remove(classNameToRemove);
                 }
             },
-            addEspecificClass : function(classNameGeneric, classNameToAdd){
+            addEspecificClass: function(classNameGeneric, classNameToAdd) {
                 var classToAdd = document.getElementsByClassName(classNameGeneric);
                 for (var i = 0; i < classToAdd.length; i++) {
                     classToAdd[i].classList.add(classNameToAdd);
@@ -172,10 +177,10 @@
 
         $scope.help = function(elem) {
             $scope.countHelp = countHelp - 1;
-            if(countHelp > 1){
+            if (countHelp > 1) {
                 $scope.showCurrentNumber = true;
                 countHelp--;
-            }else{
+            } else {
                 $scope.showCurrentNumber = true;
                 elem.currentTarget.setAttribute('disabled', true);
             }
@@ -183,21 +188,21 @@
 
         $scope.chooseAlternative = function(alternative) {
 
-            if(alternative == $scope.currentNumber){
+            if (alternative == $scope.currentNumber) {
 
                 _optionsClass.removeEspecificClass('alternative', 'current');
 
                 correct++;
                 hit++;
 
-                if($scope.showCurrentNumber == true){
+                if ($scope.showCurrentNumber == true) {
                     $scope.message = $scope.messageText.successLow;
-                }else{
-                    if(hit < 5){
+                } else {
+                    if (hit < 5) {
                         $scope.message = $scope.messageText.success;
-                    }else if(hit > 4 && hit < 10){
+                    } else if (hit > 4 && hit < 10) {
                         $scope.message = $scope.messageText.successHit;
-                    }else{
+                    } else {
                         $scope.message = $scope.messageText.successHit2;
                     }
                 }
@@ -207,7 +212,7 @@
 
                 _chooseNumber();
 
-            }else{
+            } else {
 
                 wrong++;
                 hit = 0;
@@ -221,7 +226,19 @@
         };
 
 
-        $scope.$on('timer-stopped', function (event, data){
+        $scope.$on('timer-stopped', function(event, data) {
+
+            var ref = new Firebase("https://ranking-mathematics.firebaseio.com/users");
+
+            $scope.users = $firebaseArray(ref);
+
+            $scope.users.$add({
+                name: "",
+                correct: $scope.info.correct,
+                wrong: $scope.info.wrong,
+                hit: $scope.info.hit,
+            });
+
             _showHide("info", "show");
             _showHide("presentation", "show");
             _showHide("calc", "hide");
