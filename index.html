@@ -27,27 +27,99 @@
     </div>
 
     <!-- container main-->
+    <div ng-cloack id="ranking" class="ranking">
+        <div class="ranking__box">
+            <h3>Easy</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>correct</th>
+                        <th>hit</th>
+                        <th>wrong</th>
+                        <th>level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in easy | orderBy:'-info.correct'">
+                        <td>{{user.info.name}}</td>
+                        <td>{{user.info.correct}}</td>
+                        <td>{{user.info.wrong}}</td>
+                        <td>{{user.info.hit}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="ranking__box">
+            <h3>Normal</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>correct</th>
+                        <th>hit</th>
+                        <th>wrong</th>
+                        <th>level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in normal | orderBy:'-info.correct'">
+                        <td>{{user.info.name}}</td>
+                        <td>{{user.info.correct}}</td>
+                        <td>{{user.info.wrong}}</td>
+                        <td>{{user.info.hit}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="ranking__box">
+            <h3>Hard</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>correct</th>
+                        <th>hit</th>
+                        <th>wrong</th>
+                        <th>level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in hard | orderBy:'-info.correct'">
+                        <td>{{user.info.name}}</td>
+                        <td>{{user.info.correct}}</td>
+                        <td>{{user.info.wrong}}</td>
+                        <td>{{user.info.hit}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <div ng-cloak id="container" class="centralize animated bounceIn">
+
 
         <div id="presentation">
 
             <h1 class="title animated" ng-class="className" ng-mouseenter="className = 'jello'" ng-mouseleave="className = 'pulse'">Mathematics</h1>
 
-            <form class="level centralize">
-                <h5>choose a difficulty</h5>
-                <label for="easy" ng-class="{'active' : lvl.name == 'easy'}">
-                    <input id="easy" type="radio" ng-model="lvl.name" value="easy"> Easy
-                </label>
-                <label for="normal" ng-class="{'active' : lvl.name == 'normal'}">
-                    <input id="normal" type="radio" ng-model="lvl.name" value="normal"> Normal
-                </label>
-                <label for="hard" ng-class="{'active' : lvl.name == 'hard'}">
-                    <input id="hard" type="radio" ng-model="lvl.name" value="hard"> Hard
-                </label>
-            </form>
+            <div id="chooseLevel">
+                <div class="level centralize">
+                    <h5>choose a difficulty</h5>
+                    <label for="easy" ng-class="{'active' : lvl.name == 'easy'}">
+                        <input id="easy" type="radio" ng-model="lvl.name" value="easy"> Easy
+                    </label>
+                    <label for="normal" ng-class="{'active' : lvl.name == 'normal'}">
+                        <input id="normal" type="radio" ng-model="lvl.name" value="normal"> Normal
+                    </label>
+                    <label for="hard" ng-class="{'active' : lvl.name == 'hard'}">
+                        <input id="hard" type="radio" ng-model="lvl.name" value="hard"> Hard
+                    </label>
+                </div>
 
-            <div>
-                <button class="btn btn-play bg1 centralize" type="button" ng-click="play(lvl.name)" name="button">Play</button>
+                <div>
+                    <button class="btn btn-play bg1 centralize" type="button" ng-click="play(lvl.name)" name="button">Play</button>
+                </div>
             </div>
 
             <div id="info">
@@ -57,6 +129,12 @@
             </div>
 
         </div>
+
+        <form id="yourName">
+            <input type="text" ng-model="name" placeholder="your name" />
+            <button ng-click="saveUser(name)">save</button>
+            <button ng-click="reset()">cancel</button>
+        </form>
 
         <div id="calc">
 
@@ -91,7 +169,7 @@
                 <div><span>{{info.hit}}</span> hits</div>
             </div>
 
-            <timer autostart="false" interval="1000" countdown="30">
+            <timer autostart="false" interval="1000" countdown="10">
                 <div id="clockAnimation" class="clock">
                     <div class="rotatePont rot1">
                         <div class="pont1"></div>

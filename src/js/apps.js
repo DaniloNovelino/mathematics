@@ -6,6 +6,15 @@
 
     app.controller('ctrl', function($scope, $element, $timeout, $firebaseArray) {
 
+        //Connect with firebase
+        var refEasy = new Firebase("https://ranking-mathematics.firebaseio.com/users/easy"),
+            refNormal = new Firebase("https://ranking-mathematics.firebaseio.com/users/normal"),
+            refHard = new Firebase("https://ranking-mathematics.firebaseio.com/users/hard");
+
+        $scope.easy = $firebaseArray(refEasy);
+        $scope.normal = $firebaseArray(refNormal);
+        $scope.hard = $firebaseArray(refHard);
+
         var maxNumber = 0,
             range = 0,
             correct = 0,
@@ -24,7 +33,8 @@
         $scope.info = {
             correct: 0,
             wrong: 0,
-            hit: 0
+            hit: 0,
+            name: ""
         };
 
         $scope.messageText = {
@@ -41,6 +51,7 @@
 
             _showHide("presentation", "hide");
             _showHide("calc", "show");
+            _showHide("yourName", "hide");
 
             $scope.info.correct = 0;
             $scope.info.wrong = 0;
@@ -225,28 +236,51 @@
             _timeOutComment(1000);
         };
 
+        $scope.saveUser = function(name) {
+            $scope.info.name = name;
+
+            //add user in database firebase
+            if ($scope.lvl.name == "easy") {
+                $scope.easy.$add({
+                    info: $scope.info
+                });
+            } else if ($scope.lvl.name == "normal") {
+                $scope.normal.$add({
+                    info: $scope.info
+                });
+            } else {
+                $scope.hard.$add({
+                    info: $scope.info
+                });
+            }
+
+            _showHide("yourName", "hide");
+            _showHide("info", "hide");
+            _showHide("chooseLevel", "show");
+        }
+
+        $scope.reset = function() {
+
+            _showHide("yourName", "hide");
+            _showHide("info", "hide");
+            _showHide("chooseLevel", "show");
+        }
 
         $scope.$on('timer-stopped', function(event, data) {
 
-            var ref = new Firebase("https://ranking-mathematics.firebaseio.com/users");
-
-            $scope.users = $firebaseArray(ref);
-
-            $scope.users.$add({
-                name: "",
-                correct: $scope.info.correct,
-                wrong: $scope.info.wrong,
-                hit: $scope.info.hit,
-            });
-
+            _showHide("yourName", "show");
             _showHide("info", "show");
             _showHide("presentation", "show");
             _showHide("calc", "hide");
+            _showHide("chooseLevel", "hide");
         });
 
         _showHide("info", "hide");
         _showHide("calc", "hide");
+        _showHide("yourName", "hide");
         _chooseNumber();
+
+        $scope.info.name = "";
 
     });
 
