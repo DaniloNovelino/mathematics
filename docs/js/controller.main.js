@@ -4,7 +4,7 @@
     app.controller('mainCtrl', ControllerCtrl)
 
     /** @ngInject */
-    function ControllerCtrl($scope, $timeout, $firebaseArray) {
+    function ControllerCtrl($scope, $timeout, $firebaseArray, $http) {
 
         var ref = firebase.database().ref();
         $scope.users = $firebaseArray(ref);
@@ -13,6 +13,7 @@
         $scope.filter = '';
         $scope.alertCountdown = 10;
         $scope.showAlertRanking = false;
+        $scope.language = "";
 
         var success,
             error,
@@ -25,7 +26,8 @@
             mytimeout,
             counterAlternative,
             point,
-            vm = this;
+            vm = this,
+            language = "pt-br";
 
         var _reset = function() {
 
@@ -49,6 +51,18 @@
                 $scope.yourName = "";
                 $scope.currentUser = "";
 
+            },
+
+            _selectLanguage = function(name) {
+                $http({
+                    method: 'GET',
+                    url: 'languages/' + name + '.json'
+                }).then(function(success) {
+                    $scope.language = success.data;
+                    console.log($scope.language);
+                }, function(error) {
+                    console.warn("erro on load language");
+                });
             },
 
             _loadAlternative = function() {
@@ -186,6 +200,9 @@
             boxAlert.className = "box-alert";
             angular.element(document.body).append(boxAlert);
 
+            //load language
+            _selectLanguage(language);
+
             //play game
             $scope.playGame = function(level) {
 
@@ -227,13 +244,13 @@
                         hit++;
 
                         if (hit == 10) {
-                            _showMessage(true, "awesome");
+                            _showMessage(true, $scope.language.awesome);
                             point = point + 2;
                         } else if (hit == 20) {
-                            _showMessage(true, "unbelievable");
+                            _showMessage(true, $scope.language.unbelievable);
                             point = point + 3;
                         } else {
-                            _showMessage(true, "success");
+                            _showMessage(true, $scope.language.success);
                             point = point + 1;
                         }
 
@@ -242,7 +259,7 @@
                         point--;
                         error++;
                         hit = 0;
-                        _showMessage(false, "error");
+                        _showMessage(false, $scope.language.error);
                         $scope.alternativeMessage = "error";
                     }
 
@@ -284,9 +301,9 @@
                     //save database in firebase
                     $scope.users.$add($scope.data);
 
-                    _showMessage(true, "user save");
+                    _showMessage(true, $scope.language.userSave);
                 } else {
-                    _showMessage(false, "user not save");
+                    _showMessage(false, $scope.language.userNotSave);
                 }
             }
 
@@ -299,6 +316,10 @@
                     }
                 }
                 $scope.showAlertRanking = false;
+            }
+
+            $scope.selectLanguage = function(name) {
+                _selectLanguage(name);
             }
 
         }

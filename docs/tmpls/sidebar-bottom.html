@@ -3,18 +3,18 @@
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <!-- Title -->
-                <span class="mdl-layout-title">Ranking</span>
+                <span class="mdl-layout-title">{{language.ranking}}</span>
                 <div class="mdl-layout-spacer"></div>
                 <button class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" ng-click="openSidebar('bottom', false)">
                             <i class="material-icons">close</i>
                         </button>
             </div>
             <div class="mdl-layout__tab-bar mt-layout__tab-bar">
-                <a class="mdl-layout__tab mt-layout__tab" ng-class="{'is-active' : filter == ''}" ng-click="filter = ''">filter by all</a>
-                <a class="mdl-layout__tab mt-layout__tab" ng-class="{'is-active' : filter == 'easy'}" ng-click="filter = 'easy'">😃 show level easy</a>
-                <a class="mdl-layout__tab mt-layout__tab" ng-class="{'is-active' : filter == 'normal'}" ng-click="filter = 'normal'">🙂 show level normal</a>
-                <a class="mdl-layout__tab mt-layout__tab" ng-class="{'is-active' : filter == 'hard'}" ng-click="filter = 'hard'">😰 show level hard</a>
-                <a class="mdl-layout__tab mt-layout__tab" ng-class="{'is-active' : filter == 'expert'}" ng-click="filter = 'expert'">😡 show level expert</a>
+                <a class="mdl-layout__tab mt-layout__tab" ng-class="{'is-active' : filter == ''}" ng-click="filter = ''">{{language.filterByAll}}</a>
+                <a class="mdl-layout__tab mt-layout__tab" ng-class="{'is-active' : filter == 'easy'}" ng-click="filter = 'easy'">😃 {{language.showLevelEasy}}</a>
+                <a class="mdl-layout__tab mt-layout__tab" ng-class="{'is-active' : filter == 'normal'}" ng-click="filter = 'normal'">🙂 {{language.showLevelNormal}}</a>
+                <a class="mdl-layout__tab mt-layout__tab" ng-class="{'is-active' : filter == 'hard'}" ng-click="filter = 'hard'">😰 {{language.showLevelHard}}</a>
+                <a class="mdl-layout__tab mt-layout__tab" ng-class="{'is-active' : filter == 'expert'}" ng-click="filter = 'expert'">😡 {{language.showLevelExpert}}</a>
             </div>
         </header>
 
@@ -30,14 +30,14 @@
                                     <img class="mt-image-user__img" src="{{data.user.image}}" alt="">
                                 </div>
                                 <strong class="mt-list__ranking">{{$index + 1}}º</strong>
-                                <strong class="font-size font-size--large">{{data.user.points}}</strong>pts
+                                <strong class="font-size font-size--large">{{data.user.points}}</strong>{{language.pts}}
                                 <strong class="mt-medal" ng-show="$index + 1 == 1">🥇</strong>
                                 <strong class="mt-medal" ng-show="$index + 1 == 2">🥈</strong>
                                 <strong class="mt-medal" ng-show="$index + 1 == 3">🥉</strong>
                                 <span class="left-gap">{{data.user.name}}</span>
                             </span>
                             <span class="mdl-list__item-secondary-action">
-                                {{data.countSuccess}} acertos de {{data.countSuccess + data.countError}}
+                                {{data.countSuccess}} {{language.hit}} {{language.of}} {{data.countSuccess + data.countError}}
                                 <strong ng-show="data.user.level" class="mt-level mt-level--{{data.user.level}}">{{data.user.level}}</strong>
                                 <button class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" ng-click="showDetails = !showDetails">
                                     <i class="material-icons">more_vert</i>
@@ -51,12 +51,12 @@
                     <table class="table-custom mdl-data-table mdl-js-data-table mdl-data-table--selectable">
                         <thead>
                             <tr>
-                                <th>Número 1</th>
-                                <th>Operação</th>
-                                <th>Número 2</th>
+                                <th>{{language.number1}}</th>
+                                <th>{{language.operation}}</th>
+                                <th>{{language.number2}}</th>
                                 <th></th>
-                                <th>Resposta correta</th>
-                                <th>Minha resposta</th>
+                                <th>{{language.correctAnswer}}</th>
+                                <th>{{language.myAnswer}}</th>
                                 <th></th>
                             </tr>
                         </thead>

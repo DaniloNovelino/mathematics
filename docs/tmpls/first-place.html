@@ -1,6 +1,6 @@
 <div class="mdl-card mdl-shadow--4dp mt-popup__popup mt-popup__popup--{{data.user.level}}" ng-class="{'is-active' : level == levelname}" ng-repeat="data in users | filter: levelname | orderBy: '-user.points'" ng-if="$first">
     <div class="mt-card-popup">
-        <div class="mt-card-popup__place">🥇 <strong class="font-size font-size--large">{{data.user.points}}</strong>pts</div>
+        <div class="mt-card-popup__place">🥇 <strong class="font-size font-size--large">{{data.user.points}}</strong>{{language.pts}}</div>
         <div class="mt-card-popup__title">
             <div class="mt-card-popup__img right-gap"><img src="{{data.user.image}}" alt="" /></div> {{data.user.name}}
         </div>

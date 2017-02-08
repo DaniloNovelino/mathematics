@@ -4,27 +4,27 @@
 
         <!-- level easy -->
         <button type="button" ng-class="{'mdl-button--colored' : level == 'easy'}" ng-click="level = 'easy'" class="btn-level btn-level--easy mt-popup mt-popup--button mdl-button mdl-button--raised">
-            <span>easy</span>
+            <span>{{language.easy}}</span>
             <first-place levelname="easy"></first-place>
         </button>
         <!-- level normal -->
         <button type="button" ng-class="{'mdl-button--colored' : level == 'normal'}" ng-click="level = 'normal'" class="btn-level btn-level--normal mt-popup mt-popup--button mdl-button mdl-button--raised">
-            <span>normal</span>
+            <span>{{language.normal}}</span>
             <first-place levelname="normal"></first-place>
         </button>
         <!-- level hard -->
         <button type="button" ng-class="{'mdl-button--colored' : level == 'hard'}" ng-click="level = 'hard'" class="btn-level btn-level--hard mt-popup mt-popup--button mdl-button mdl-button--raised">
-            <span>hard</span>
+            <span>{{language.hard}}</span>
             <first-place levelname="hard"></first-place>
         </button>
         <!-- level expert -->
         <button type="button" ng-class="{'mdl-button--colored' : level == 'expert'}" ng-click="level = 'expert'" class="btn-level btn-level--expert mt-popup mt-popup--button mdl-button mdl-button--raised">
-            <span>expert</span>
+            <span>{{language.expert}}</span>
             <first-place levelname="expert"></first-place>
         </button>
     </div>
 
-    <h5>Select a level and press play</h5>
+    <h5>{{language.selectALevelAndPressPlay}}</h5>
 
     <div class="bottom-gap">
         <button ng-class="classAnimate" ng-mouseenter="classAnimate = 'pulse'" ng-mouseleave="classAnimate = ''" class="mt-button--play mdl-button mdl-js-button mdl-button--colored mdl-button--raised mdl-js-ripple-effect animated" ng-click="playGame(level)">
@@ -32,5 +32,5 @@
         </button>
     </div>
 
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mt-show-alert-raking animated" ng-class="{'rubberBand' : showAlertRanking}" ng-click="openSidebar('bottom')">🏆 show ranking</button>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mt-show-alert-raking animated" ng-class="{'rubberBand' : showAlertRanking}" ng-click="openSidebar('bottom')">🏆 {{language.showRanking}}</button>
 </div>

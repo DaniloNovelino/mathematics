@@ -24,14 +24,14 @@
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <!-- Title -->
-                <span class="mdl-layout-title">Mathematics</span>
+                <span class="mdl-layout-title">{{language.mathematics}}</span>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
                 <nav class="mdl-navigation mdl-layout--large-screen-only" ng-include="'tmpls/menu.html'"></nav>
             </div>
         </header>
         <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">Menu</span>
+            <span class="mdl-layout-title">{{language.menu}}</span>
             <nav class="mdl-navigation" ng-include="'tmpls/menu.html'"></nav>
         </div>
 
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="mt-game">
-                            <div class="mt-game__title bottom-gap">Issue {{counterAlternative}}</div>
+                            <div class="mt-game__title bottom-gap">{{language.issue}} {{counterAlternative}}</div>
 
                             <div class="mt-game__operation">{{alternativeA}} {{operation}} {{alternativeB}}</div>
 
@@ -59,13 +59,13 @@
                             <form ng-submit="showAnswer(answer)">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <input class="mt-game__input mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4" ng-model="answer">
-                                    <label class="mt-game__label mdl-textfield__label" for="sample4">Insert a number and press ENTER</label>
-                                    <span class="mdl-textfield__error">It's not a number!</span>
+                                    <label class="mt-game__label mdl-textfield__label" for="sample4">{{language.insertANumberAndPressEnter}}</label>
+                                    <span class="mdl-textfield__error">{{language.itsNotANumber}}</span>
                                 </div>
                             </form>
 
                             <div>
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="fnSkip()" ng-disabled="skip == 0">skip {{skip}}</button>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="fnSkip()" ng-disabled="skip == 0">{{language.skip}} {{skip}}</button>
                             </div>
 
                             <div ng-include="'tmpls/status.html'"></div>

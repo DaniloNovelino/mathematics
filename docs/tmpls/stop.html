@@ -1,9 +1,6 @@
 <div class="mt-game animated fadeIn" ng-show="stop">
     <form>
-        <!--<div class="bottom-gap" ng-controller="emojiCtrl">
-            <div class="mt-emoji__icon" ng-repeat="emoji in emojis" ng-click="yourName = emoji">{{emoji}}</div>
-        </div>-->
-        <div class="mt-game__title">Your name</div>
+        <div class="mt-game__title">{{language.yourName}}</div>
 
         <div class="mt-game__textfield mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mt-game__input mt-game__input--yourname mdl-textfield__input" type="text" ng-model="yourName" maxlength="21">
@@ -12,8 +9,8 @@
         <div class="bottom-gap" ng-include="'tmpls/status.html'"></div>
 
         <button ng-disabled="!yourName" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" ng-click="saveUser(yourName)">
-          save <span ng-show="yourName">as {{yourName}}</span>
+          {{language.save}} <span ng-show="yourName">{{language.as}} {{yourName}}</span>
         </button>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="saveUser(undefined)">cancel</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="saveUser(undefined)">{{language.cancel}}</button>
     </form>
 </div>
