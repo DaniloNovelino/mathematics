@@ -89,8 +89,8 @@
     <!--Angular JS-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
     <!--Firebase by Google-->
-    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
     <!--Material Design Google-->
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <!--My App-->
@@ -99,7 +99,54 @@
     <script src="js/filters.js"></script>
     <!--My App > Controllers-->
     <script src="js/controller.main.js"></script>
-    <!--<script src="js/controller.emoji.js"></script>-->
+    <!--Initializate firebase-->
+    <script>
+        var config = {
+            apiKey: "AIzaSyCug_yc7K7nzuWHs2gotQqL5KIDWrtblmk",
+            authDomain: "ranking-mathematics.firebaseapp.com",
+            databaseURL: "https://ranking-mathematics.firebaseio.com",
+            storageBucket: "ranking-mathematics.appspot.com",
+            messagingSenderId: "884429154691"
+        };
+        firebase.initializeApp(config);
+
+        firebase.auth().signInAnonymously().catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+        });
+
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+                var isAnonymous = user.isAnonymous;
+                var uid = user.uid;
+                // ...
+            } else {
+                // User is signed out.
+                // ...
+            }
+            // ...
+        });
+    </script>
+    <!--Google Analytics-->
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-91614150-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 
 </html>

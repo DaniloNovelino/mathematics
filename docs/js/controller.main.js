@@ -6,8 +6,8 @@
     /** @ngInject */
     function ControllerCtrl($scope, $timeout, $firebaseArray) {
 
-        var refUsers = new Firebase("https://ranking-mathematics-2.firebaseio.com/users");
-        $scope.users = $firebaseArray(refUsers);
+        var ref = firebase.database().ref();
+        $scope.users = $firebaseArray(ref);
 
         $scope.openSidebarBottom = false;
         $scope.filter = '';
