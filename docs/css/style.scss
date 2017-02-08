@@ -1,0 +1,463 @@
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
+}
+
+$primary-color: rgb(33, 150, 243);
+$secondary-color: rgb(255, 64, 129);
+$color-easy:#AA00FF;
+$color-normal:#2196F3;
+$color-hard:#F44336;
+$color-expert:#212121;
+* {
+    box-sizing: border-box;
+}
+
+html>body {
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif !important;
+    background-color: #FAFAFA;
+    overflow: hidden;
+}
+
+.width-100-percent {
+    width: 100%;
+}
+
+.font-size {
+    &.font-size--large {
+        font-size: 2em;
+        font-weight: 300;
+    }
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.no-gap {
+    margin: 0;
+    padding: 0;
+}
+
+.top-gap {
+    margin-top: 1em;
+}
+
+.bottom-gap {
+    margin-bottom: 1em;
+}
+
+.left-gap {
+    margin-left: 1em;
+}
+
+.right-gap {
+    margin-right: 1em;
+}
+
+%font-family {
+    font-family: 'Bungee Shade', cursive;
+}
+
+.table-custom {
+    width: 100%;
+    font-size: 1.1em;
+    font-weight: 100;
+    td:not(:last-child),
+    th:not(:last-child) {
+        text-align: center;
+    }
+    th {
+        text-transform: uppercase;
+    }
+}
+
+.flex {
+    display: flex;
+    &.flex--align-center {
+        justify-content: center;
+    }
+    &.flex--align-center-center {
+        justify-content: center;
+        align-items: center;
+    }
+    &.flex--height-100 {
+        height: calc(100vh - 64px);
+    }
+}
+
+//MIXINS
+//
+@mixin transition($attribute, $delay) {
+    transition: $attribute $delay ease-in-out;
+}
+
+//BOX ALERT
+//
+.box-alert {
+    position: absolute;
+    right: 30px;
+    top: 190px;
+    .box-alert__message {
+        margin-bottom: .5em;
+        padding: .5em 1em;
+        border-radius: 4px;
+        text-align: center;
+        position: relative;
+        top: 0;
+        left: 0;
+        transition: initial;
+        transform: initial;
+    }
+}
+
+//SIDEBAR
+//
+.sidebar {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    @include transition(transform, .4s);
+    &.sidebar--bottom {
+        bottom: 0;
+        transform: translateY(100%);
+    }
+    &.sidebar--is-open {
+        transform: translateY(0);
+        box-shadow: 0 0 40px 0px rgba(0, 0, 0, .4);
+    }
+    .sidebar__close {
+        position: absolute;
+        right: 1em;
+        top: .3em;
+    }
+}
+
+//COLORS
+//
+.color-success {
+    &.color-success--text {
+        color: #4CAF50;
+    }
+    &.color-success--bg {
+        background-color: lighten(#4CAF50, 48%);
+    }
+}
+
+.color-error {
+    &.color-error--text {
+        color: #F44336;
+    }
+    &.color-error--bg {
+        background-color: lighten(#F44336, 39%);
+    }
+}
+
+//MATHEMATICS CHOOSE LEVEL
+//
+.mt-choose-level {
+    text-align: center;
+}
+
+//MATHEMATICS CARD
+//
+.mt-card {
+    min-height: 0;
+    .mt-card__actions {
+        overflow-x: auto;
+    }
+    .mt-medal {
+        margin-left: .5em;
+        font-size: 1.8em;
+    }
+    .mt-list__item {
+        margin-left: 90px;
+    }
+    .mt-list__ranking {
+        position: absolute;
+        left: 12px;
+        font-size: 1.3em;
+        color: #fff;
+        text-shadow: 0 0 4px rgba(0, 0, 0, .4);
+        font-weight: 900;
+        font-style: italic;
+        top: 12px;
+    }
+    &.mt-card--current {
+        background-color: lighten($primary-color, 35%);
+        .mt-level {
+            animation-name: flip;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+    }
+}
+
+//MATHEMATICS CARD SCORE
+//
+.mt-card-score {
+    .mt-card-score__title {
+        height: 176px;
+        background-repeat: no-repeat;
+    }
+}
+
+//MATHEMATICS BUTTON POPUP
+//
+.mt-popup {
+    position: relative;
+    &.mt-popup--button {
+        overflow: visible;
+        &:focus:not(:active) {
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+        }
+    }
+    .mt-popup__popup {
+        position: absolute;
+        top: 0;
+        height: 140px;
+        width: 300px;
+        transform: translateY(calc(-100% - 1em));
+        min-height: 0;
+        color: #000;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
+        display: none;
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            border-left: .4em solid transparent;
+            border-right: .4em solid transparent;
+            border-top: .4em solid white;
+            transform: translateY(100%);
+        }
+        &.mt-popup__popup--easy {
+            left: calc(-300px / 2 + (90px / 2));
+        }
+        &.mt-popup__popup--normal {
+            left: calc(-300px / 2 + (112px / 2));
+        }
+        &.mt-popup__popup--hard {
+            left: calc(-300px / 2 + (92px / 2));
+        }
+        &.mt-popup__popup--expert {
+            left: calc(-300px / 2 + (130px / 2));
+        }
+        &.is-active {
+            display: flex;
+        }
+    }
+    .mt-card-popup__title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .mt-card-popup__img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+//MATHEMATICS LEVEL
+//
+.mt-level {
+    border-radius: 4px;
+    font-size: .8em;
+    margin: 0 1em;
+    color: #fff;
+    font-weight: 400;
+    display: inline-block;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    &.mt-level--easy {
+        background-color: $color-easy;
+    }
+    &.mt-level--normal {
+        background-color: $color-normal;
+    }
+    &.mt-level--hard {
+        background-color: $color-hard;
+    }
+    &.mt-level--expert {
+        background-color: $color-expert;
+    }
+}
+
+//MATHEMATICS BUTTONS COLOR
+//
+.btn-level {
+    &.btn-level--easy {
+        &.mdl-button--colored {
+            background-color: $color-easy !important;
+        }
+    }
+    &.btn-level--normal {
+        &.mdl-button--colored {
+            background-color: $color-normal !important;
+        }
+    }
+    &.btn-level--hard {
+        &.mdl-button--colored {
+            background-color: $color-hard !important;
+        }
+    }
+    &.btn-level--expert {
+        &.mdl-button--colored {
+            background-color: $color-expert !important;
+        }
+    }
+}
+
+//MATHEMATICS COUNTDOWN
+//
+.mt-countdown {
+    $margin: 30px;
+    position: absolute;
+    font-size: 5em;
+    right: $margin;
+    color: $primary-color;
+    top: $margin;
+    cursor: default;
+    &.animated {
+        animation-iteration-count: infinite;
+    }
+    .material-icons {
+        font-size: 1em;
+    }
+}
+
+//MATHEMATICS BUTTONS
+//
+.mt-button--play {
+    padding: 0em 4em;
+    height: 5em;
+    .material-icons {
+        font-size: 3em;
+    }
+}
+
+//MATHEMATICS SCROLL
+//
+.mt-scroll {
+    overflow-y: auto;
+    height: calc(100% - 40px);
+    padding: 1em;
+    background-color: #fff;
+}
+
+//MATHEMATICS LOADING 
+//
+.mt-loading--spinner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 140px;
+    margin: auto;
+}
+
+//MATHEMATICS LAYOUT TAB
+//
+.mt-layout__tab-bar {
+    height: auto;
+    .mt-layout__tab {
+        border-bottom: 2px solid transparent;
+        &.is-active {
+            border-color: $secondary-color;
+            color: #fff;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+//MATHEMATICS IMAGE USER CARD
+//
+.mt-image-user {
+    position: absolute;
+    width: 100px;
+    height: 64px;
+    top: 0;
+    left: -12px;
+    transform: skewX(-20deg);
+    overflow: hidden;
+    .mt-image-user__img {
+        width: 100%;
+        transform: skew(20deg);
+        position: absolute;
+        top: -16px;
+        left: 13px;
+    }
+}
+
+//MATHEMATICS GAME
+//
+.mt-game {
+    text-align: center;
+    position: relative;
+    .mt-game__title {
+        text-transform: uppercase;
+        font-size: 2em;
+        font-weight: 100;
+    }
+    .mt-game__textfield {
+        width: 100%;
+        max-width: 600px;
+    }
+    .mt-game__operation {
+        font-size: 8em;
+        font-weight: 100;
+        line-height: 1em;
+        @extend %font-family;
+        margin-bottom: 50px;
+    }
+    .mt-game__input {
+        font-size: 5em;
+        text-align: center;
+        font-weight: 100;
+        &.mt-game__input--yourname {
+            font-size: 3em;
+        }
+    }
+    .mt-game__label {
+        text-align: center;
+    }
+}
+
+//MATHEMATICS EMOJI
+//
+.mt-emoji__icon {
+    @include transition(transform, .2s);
+    display: inline-block;
+    &:hover {
+        transform: scale(2);
+        cursor: pointer;
+    }
+}
+
+//MATHEMATICS SHOW ALERT RANKING
+//
+.mt-show-alert-raking {
+    &.animated {
+        animation-iteration-count: infinite;
+    }
+}
