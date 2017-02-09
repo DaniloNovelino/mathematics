@@ -3,7 +3,15 @@
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <!-- Title -->
-                <span class="mdl-layout-title">{{language.ranking}}</span>
+                <span class="mdl-layout-title right-gap">{{language.ranking}}</span>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-left">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input" type="text" name="sample" id="fixed-header-drawer-exp" ng-model="searchUser">
+                    </div>
+                </div>
                 <div class="mdl-layout-spacer"></div>
                 <button class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" ng-click="openSidebar('bottom', false)">
                             <i class="material-icons">close</i>
@@ -21,7 +29,7 @@
         <div class="mt-loading--spinner mdl-spinner mdl-js-spinner is-active"></div>
 
         <div class="mt-scroll">
-            <div style="animation-delay: 0.{{$index}}s" ng-repeat="data in users | orderBy: '-user.points' | filter: filter" ng-class="{'mt-card--current' : currentUser == data.user.name}" class="animated fadeIn mt-card mdl-card mdl-shadow--2dp bottom-gap width-100-percent">
+            <div style="animation-delay: 0.{{$index}}s" ng-repeat="data in users | orderBy: '-user.points' | filter: filter | filter: searchUser" ng-class="{'mt-card--current' : currentUser == data.user.name}" class="animated fadeIn mt-card mdl-card mdl-shadow--2dp bottom-gap width-100-percent">
                 <div class="mt-card__title mdl-card__title no-gap">
                     <div class="mdl-list width-100-percent no-gap">
                         <div class="mdl-list__item mt-list__item">
