@@ -14,3 +14,7 @@ node_modules
 # VScode Workspace file #
 ######################
 .vscode
+
+# Files #
+######################
+debug.log
