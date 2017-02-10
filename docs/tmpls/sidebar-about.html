@@ -1,0 +1,23 @@
+<div style="z-index: 3;" class="sidebar sidebar--bottom" ng-class="{'sidebar--is-open' : openSidebarAbout}">
+    <div class="mdl-layout">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title right-gap">{{language.aboutTheGame}}</span>
+                <div class="mdl-layout-spacer"></div>
+                <button class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" ng-click="openSidebar('bottom', 'about', false)">
+                            <i class="material-icons">close</i>
+                        </button>
+            </div>
+        </header>
+
+        <div class="mt-scroll">
+            <div class="mdl-grid">
+                <div class="mdl-cell--middle mdl-cell--6-col">
+                    {{language.aboutDescription}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

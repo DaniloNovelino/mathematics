@@ -9,7 +9,8 @@
         var ref = firebase.database().ref();
         $scope.users = $firebaseArray(ref);
 
-        $scope.openSidebarBottom = false;
+        $scope.openSidebarRanking = false;
+        $scope.openSidebarAbout = false;
         $scope.filter = '';
         $scope.alertCountdown = 10;
         $scope.showAlertRanking = false;
@@ -306,12 +307,20 @@
                 }
             }
 
-            $scope.openSidebar = function(position, flag) {
+            $scope.openSidebar = function(position, item, flag) {
                 if (position == 'bottom') {
                     if (flag == undefined) {
-                        $scope.openSidebarBottom = !$scope.openSidebarBottom;
+                        if (item == 'ranking') {
+                            $scope.openSidebarRanking = !$scope.openSidebarRanking;
+                        } else if (item == 'about') {
+                            $scope.openSidebarAbout = !$scope.openSidebarAbout;
+                        }
                     } else {
-                        $scope.openSidebarBottom = flag;
+                        if (item == 'ranking') {
+                            $scope.openSidebarRanking = flag;
+                        } else if (item == 'about') {
+                            $scope.openSidebarAbout = flag;
+                        }
                     }
                 }
                 $scope.showAlertRanking = false;

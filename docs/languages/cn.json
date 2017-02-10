@@ -6,6 +6,7 @@
     "selectALevelAndPressPlay": "选择一个级别，然后按播放",
     "showRanking": "排名显示",
     "aboutTheGame": "游戏简介",
+    "aboutDescription": "这个迷你游戏是为了加强那些练习数学运算的人的心。 这很简单，玩，尝试打败你的对手的记录",
     "pts": "点",
     "issue": "问题",
     "error": "错误",
@@ -40,5 +41,6 @@
     "menu": "菜单",
     "mathematics": "Mathematics",
     "awesome": "真棒",
-    "unbelievable": "惊人"
+    "unbelievable": "惊人",
+    "record": "记录"
 }

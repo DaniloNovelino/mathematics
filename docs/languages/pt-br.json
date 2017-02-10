@@ -6,6 +6,7 @@
     "selectALevelAndPressPlay": "Selecione um nível e pressione play",
     "showRanking": "Mostrar ranking",
     "aboutTheGame": "Sobre o jogo",
+    "aboutDescription": "Este mini jogo foi criado no intuito de reforçar a mente de quem pratica as operações matemáticas. É simples, jogue e tente bater o recorde do seu oponente",
     "pts": "pts",
     "issue": "Questão",
     "error": "Erros",
@@ -40,5 +41,6 @@
     "menu": "Menu",
     "mathematics": "Mathematics",
     "awesome": "Impressionante",
-    "unbelievable": "Inacreditável"
+    "unbelievable": "Inacreditável",
+    "record": "Recorde"
 }

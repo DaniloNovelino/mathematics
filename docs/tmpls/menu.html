@@ -1,8 +1,7 @@
-<a class="mdl-navigation__link" href="#">{{language.aboutTheGame}}</a>
-<a class="mdl-navigation__link" href="http://github.com/interaminense">github @interaminense</a>
+<a class="mdl-navigation__link iam-clickable" ng-click="openSidebar('bottom', 'about')">{{language.aboutTheGame}}</a>
 
 <a href="" id="menu-lower-right" class="mdl-navigation__link">
-    <i id="select-language" class="material-icons">language</i> {{language.language}}
+    <span id="select-language"><i class="material-icons">language</i> {{language.language}}</span>
 </a>
 
 <div class="mdl-tooltip mdl-tooltip--left" data-mdl-for="select-language">

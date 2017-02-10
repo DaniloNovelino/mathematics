@@ -6,6 +6,7 @@
     "selectALevelAndPressPlay": "Select a level and press play",
     "showRanking": "Show ranking",
     "aboutTheGame": "About the game",
+    "aboutDescription": "This mini game was created in order to strengthen the mind of those who practice mathematical operations. It's simple, play and try to beat your opponent's record",
     "pts": "pts",
     "issue": "Issue",
     "error": "Error",
@@ -40,5 +41,6 @@
     "menu": "Menu",
     "mathematics": "Mathematics",
     "awesome": "Awesome",
-    "unbelievable": "Unbelievable"
+    "unbelievable": "Unbelievable",
+    "record": "Record"
 }
