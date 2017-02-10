@@ -6,6 +6,7 @@ node_modules
 ######################
 .DS_Store
 .DS_Store?
+.log
 
 # Sublime Workspace file #
 ######################
@@ -14,7 +15,3 @@ node_modules
 # VScode Workspace file #
 ######################
 .vscode
-
-# Files #
-######################
-debug.log
