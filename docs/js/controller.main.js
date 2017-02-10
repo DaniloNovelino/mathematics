@@ -59,7 +59,6 @@
                     url: 'languages/' + name + '.json'
                 }).then(function(success) {
                     $scope.language = success.data;
-                    console.log($scope.language);
                 }, function(error) {
                     console.warn("erro on load language");
                 });

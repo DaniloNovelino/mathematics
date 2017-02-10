@@ -5,6 +5,13 @@
     <title>Mathematics</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1481d8">
+    <meta name="description" content="Pratique as operações matemáticas básicas jogando!">
+    <meta name="abstract" content="">
+    <meta name="keywords" content="Mathematics, html5, css3, firebase, angularjs, adriano interaminense, interaminense, github">
+    <meta name="robot" content="all">
+    <!--Favicon-->
+    <link rel="icon" type="image/png" href="img/favicon.png" />
     <!--Material Design Google-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-pink.min.css" />
@@ -15,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
     <!--My App-->
     <link rel="stylesheet" href="css/style.min.css" />
+    <link rel="stylesheet" href="css/responsive.min.css" />
 </head>
 
 <body ng-cloak class="ng-cloak" ng-controller="mainCtrl">
@@ -56,8 +64,8 @@
                             <div class="mt-game__operation">{{alternativeA}} {{operation}} {{alternativeB}}</div>
 
                             <!--form-->
-                            <form ng-submit="showAnswer(answer)">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <form ng-submit="showAnswer(answer)" autocomplete="off">
+                                <div class="mt-textfield mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <input class="mt-game__input mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4" ng-model="answer">
                                     <label class="mt-game__label mdl-textfield__label" for="sample4">{{language.insertANumberAndPressEnter}}</label>
                                     <span class="mdl-textfield__error">{{language.itsNotANumber}}</span>
@@ -81,7 +89,7 @@
 
             </div>
         </main>
-        <footer class="mdl-mini-footer" ng-include="'tmpls/footer.html'"></footer>
+        <footer class="mdl-mini-footer mt-mini-footer" ng-include="'tmpls/footer.html'"></footer>
     </div>
 
     <!-- SIDEBAR BOTTOM -->

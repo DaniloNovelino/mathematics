@@ -461,3 +461,8 @@ html>body {
         animation-iteration-count: infinite;
     }
 }
+
+//ADJUST MDL
+.mdl-layout__header {
+    display: block !important;
+}

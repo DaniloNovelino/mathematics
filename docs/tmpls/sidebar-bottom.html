@@ -33,21 +33,21 @@
                 <div class="mt-card__title mdl-card__title no-gap">
                     <div class="mdl-list width-100-percent no-gap">
                         <div class="mdl-list__item mt-list__item">
-                            <span class="mdl-list__item-primary-content">
+                            <span class="mdl-list__item-primary-content mt-list__item-primary-content">
                                 <div class="mt-image-user">
                                     <img class="mt-image-user__img" src="{{data.user.image}}" alt="">
                                 </div>
-                                <strong class="mt-list__ranking">{{$index + 1}}º</strong>
+                                <strong class="mt-list__ranking mt-hidden-xs">{{$index + 1}}º</strong>
                                 <strong class="font-size font-size--large">{{data.user.points}}</strong>{{language.pts}}
                                 <strong class="mt-medal" ng-show="$index + 1 == 1"><img width="30" src="img/medal-gold.png" alt=""></strong>
                                 <strong class="mt-medal" ng-show="$index + 1 == 2"><img width="30" src="img/medal-silver.png" alt=""></strong>
                                 <strong class="mt-medal" ng-show="$index + 1 == 3"><img width="30" src="img/medal-bronze.png" alt=""></strong>
-                                <span class="left-gap">{{data.user.name}}</span>
+                                <span class="left-gap mt-name-user" ng-class="{'mt-name-user--minor' : $index + 1 == 1 || $index + 1 == 2 || $index + 1 == 3}">{{data.user.name}}</span>
                             </span>
                             <span class="mdl-list__item-secondary-action">
-                                {{data.countSuccess}} {{language.hit}} {{language.of}} {{data.countSuccess + data.countError}}
-                                <strong ng-show="data.user.level" class="mt-level mt-level--{{data.user.level}}">{{data.user.level}}</strong>
-                                <button class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" ng-click="showDetails = !showDetails">
+                                <span class="mt-hidden-xs">{{data.countSuccess}} {{language.hit}} {{language.of}} {{data.countSuccess + data.countError}}</span>
+                            <strong ng-show="data.user.level" class="mt-level mt-level--{{data.user.level}}">{{data.user.level}}</strong>
+                            <button class="mt-button-show-detail mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" ng-click="showDetails = !showDetails">
                                     <i class="material-icons">more_vert</i>
                                 </button>
                             </span>
